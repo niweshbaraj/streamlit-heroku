@@ -15,11 +15,21 @@ def user_input_two_nums():
     first_num = st.number_input('Enter the 1st Number ')
     second_num = st.number_input('Enter the 2nd Number ')
 
-    return (first_num, second_num)
+    data = {'First Number': first_num,
+            'Second Number': second_num
+            }
+    return (data)
 
 
-f_no, s_no = user_input_two_nums()
+data = user_input_two_nums()
+
+
+f_no, s_no = data['First Number'], data['Second Number']
 result = float(f_no) - float(s_no)
 if (st.button('Subtract')):
     st.write("RESULT!!!")
     st.write("Subtraction of 2nd Num from 1st Num = ", f_no-s_no)
+
+    data['Result'] = result
+    st.subheader('User Input parameters')
+    st.write(data)
